@@ -1,0 +1,514 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: AI Creator Tools API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: tools
+    description: AI-powered creator tools
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /tools/youtube-titles:
+    post:
+      operationId: generateYoutubeTitles
+      tags: [tools]
+      summary: Generate YouTube titles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/YoutubeTitlesRequest"
+      responses:
+        "200":
+          description: Generated titles
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextListResponse"
+
+  /tools/instagram-bio:
+    post:
+      operationId: generateInstagramBio
+      tags: [tools]
+      summary: Generate Instagram bio
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstagramBioRequest"
+      responses:
+        "200":
+          description: Generated bio
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextResponse"
+
+  /tools/hashtags:
+    post:
+      operationId: generateHashtags
+      tags: [tools]
+      summary: Generate hashtags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HashtagsRequest"
+      responses:
+        "200":
+          description: Generated hashtags
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextListResponse"
+
+  /tools/caption:
+    post:
+      operationId: generateCaption
+      tags: [tools]
+      summary: Generate social media caption
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CaptionRequest"
+      responses:
+        "200":
+          description: Generated caption
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextResponse"
+
+  /tools/blog-ideas:
+    post:
+      operationId: generateBlogIdeas
+      tags: [tools]
+      summary: Generate blog post ideas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogIdeasRequest"
+      responses:
+        "200":
+          description: Generated blog ideas
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextListResponse"
+
+  /tools/email-subject:
+    post:
+      operationId: generateEmailSubject
+      tags: [tools]
+      summary: Generate email subject lines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmailSubjectRequest"
+      responses:
+        "200":
+          description: Generated subject lines
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextListResponse"
+
+  /tools/tweet:
+    post:
+      operationId: generateTweet
+      tags: [tools]
+      summary: Generate tweets/X posts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TweetRequest"
+      responses:
+        "200":
+          description: Generated tweets
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextListResponse"
+
+  /tools/product-description:
+    post:
+      operationId: generateProductDescription
+      tags: [tools]
+      summary: Generate product description
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductDescriptionRequest"
+      responses:
+        "200":
+          description: Generated description
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextResponse"
+
+  /tools/ad-copy:
+    post:
+      operationId: generateAdCopy
+      tags: [tools]
+      summary: Generate ad copy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdCopyRequest"
+      responses:
+        "200":
+          description: Generated ad copy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextListResponse"
+
+  /tools/text-to-emoji:
+    post:
+      operationId: textToEmoji
+      tags: [tools]
+      summary: Convert text to emoji
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SimpleTextRequest"
+      responses:
+        "200":
+          description: Emoji output
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextResponse"
+
+  /tools/paraphrase:
+    post:
+      operationId: paraphraseText
+      tags: [tools]
+      summary: Paraphrase/rewrite text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ParaphraseRequest"
+      responses:
+        "200":
+          description: Paraphrased text
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextResponse"
+
+  /tools/grammar-check:
+    post:
+      operationId: grammarCheck
+      tags: [tools]
+      summary: Grammar and spell check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SimpleTextRequest"
+      responses:
+        "200":
+          description: Corrected text
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GrammarCheckResponse"
+
+  /tools/summarize:
+    post:
+      operationId: summarizeText
+      tags: [tools]
+      summary: Summarize text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SummarizeRequest"
+      responses:
+        "200":
+          description: Summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TextResponse"
+
+  /tools/seo-meta:
+    post:
+      operationId: generateSeoMeta
+      tags: [tools]
+      summary: Generate SEO meta title and description
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SeoMetaRequest"
+      responses:
+        "200":
+          description: SEO meta tags
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SeoMetaResponse"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    TextResponse:
+      type: object
+      properties:
+        result:
+          type: string
+      required:
+        - result
+
+    TextListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: string
+      required:
+        - results
+
+    SimpleTextRequest:
+      type: object
+      properties:
+        text:
+          type: string
+      required:
+        - text
+
+    YoutubeTitlesRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+        style:
+          type: string
+          enum: [educational, entertaining, clickbait, listicle, how-to]
+      required:
+        - topic
+
+    InstagramBioRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        niche:
+          type: string
+        tone:
+          type: string
+          enum: [professional, funny, inspiring, casual]
+      required:
+        - name
+        - niche
+
+    HashtagsRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+        platform:
+          type: string
+          enum: [instagram, twitter, tiktok, linkedin]
+        count:
+          type: integer
+          minimum: 5
+          maximum: 30
+      required:
+        - topic
+        - platform
+
+    CaptionRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        platform:
+          type: string
+          enum: [instagram, facebook, linkedin, twitter]
+        tone:
+          type: string
+          enum: [funny, professional, inspirational, casual]
+      required:
+        - description
+        - platform
+
+    BlogIdeasRequest:
+      type: object
+      properties:
+        niche:
+          type: string
+        count:
+          type: integer
+          minimum: 3
+          maximum: 10
+      required:
+        - niche
+
+    EmailSubjectRequest:
+      type: object
+      properties:
+        emailTopic:
+          type: string
+        audience:
+          type: string
+      required:
+        - emailTopic
+
+    TweetRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+        tone:
+          type: string
+          enum: [informative, funny, controversial, inspirational]
+        count:
+          type: integer
+          minimum: 1
+          maximum: 5
+      required:
+        - topic
+
+    ProductDescriptionRequest:
+      type: object
+      properties:
+        productName:
+          type: string
+        features:
+          type: string
+        targetAudience:
+          type: string
+      required:
+        - productName
+        - features
+
+    AdCopyRequest:
+      type: object
+      properties:
+        product:
+          type: string
+        platform:
+          type: string
+          enum: [google, facebook, instagram, twitter]
+        goal:
+          type: string
+          enum: [awareness, clicks, conversions, engagement]
+      required:
+        - product
+        - platform
+
+    ParaphraseRequest:
+      type: object
+      properties:
+        text:
+          type: string
+        tone:
+          type: string
+          enum: [formal, casual, simple, creative]
+      required:
+        - text
+
+    GrammarCheckResponse:
+      type: object
+      properties:
+        corrected:
+          type: string
+        changes:
+          type: array
+          items:
+            type: string
+      required:
+        - corrected
+        - changes
+
+    SummarizeRequest:
+      type: object
+      properties:
+        text:
+          type: string
+        length:
+          type: string
+          enum: [short, medium, long]
+      required:
+        - text
+
+    SeoMetaRequest:
+      type: object
+      properties:
+        pageTitle:
+          type: string
+        description:
+          type: string
+        keywords:
+          type: string
+      required:
+        - pageTitle
+        - description
+
+    SeoMetaResponse:
+      type: object
+      properties:
+        metaTitle:
+          type: string
+        metaDescription:
+          type: string
+        keywords:
+          type: array
+          items:
+            type: string
+      required:
+        - metaTitle
+        - metaDescription
+        - keywords

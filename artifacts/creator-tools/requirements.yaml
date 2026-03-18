@@ -1,0 +1,11 @@
+packages:
+  "framer-motion": "For page transitions, smooth tool card hover animations, and staggered list reveals"
+  "clsx": "For merging conditional Tailwind classes in reusable components"
+  "tailwind-merge": "For conflict-free Tailwind class overriding in components"
+images:
+  - path: "artifacts/creator-tools/public/images/hero-bg.png"
+    description: "Abstract modern background mesh with deep vivid purple, vibrant magenta, and soft light leaks, professional and eye-catching without being distracting"
+    aspect_ratio: "16:9"
+notes:
+  - "App uses generated React Query hooks from @workspace/api-client-react"
+  - "All routing uses wouter without nested <a> tags"
